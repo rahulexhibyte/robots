@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { makeStyles, Box } from "@material-ui/core";
 import RobotDetailItem from "../../components/robots/robotDetailsItem";
 import RobotDetailsGrid from "../../components/robots/robotDetailsGrid";
+import { useDispatch, useSelector } from "react-redux";
+import { getRobotsDetails } from "../../redux/actions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,6 +53,12 @@ const useStyles = makeStyles((theme) => ({
 export default function RobotDetails() {
   const { name } = useParams();
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const { status, battery, pressure, milage, lastService } = useSelector(
+    (state) => state.currentRobotDetail
+  );
+
+  useEffect(() => dispatch(getRobotsDetails(name)), []);
   return (
     <div className={classes.robotDetailWrapper}>
       <div className={classes.robotDetailHeader}>
@@ -59,13 +67,13 @@ export default function RobotDetails() {
       </div>
       <div elevation={1} className={classes.root}>
         <Box className={classes.shortData}>
-          <RobotDetailItem label="Status" data="idle" />
-          <RobotDetailItem label="Battery" data="100%" />
-          <RobotDetailItem label="Pressure" data="95 mbar" />
-          <RobotDetailItem label="Milage" data="3424km" />
-          <RobotDetailItem label="Last service:" data="01-01-21" />
+          <RobotDetailItem label="Status" data={status} />
+          <RobotDetailItem label="Battery" data={battery} />
+          <RobotDetailItem label="Pressure" data={pressure} />
+          <RobotDetailItem label="Milage" data={milage} />
+          <RobotDetailItem label="Last service:" data={lastService} />
         </Box>
-        <RobotDetailsGrid />
+        <RobotDetailsGrid name={name} />
       </div>
     </div>
   );

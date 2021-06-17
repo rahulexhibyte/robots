@@ -1,0 +1,4 @@
+export const constants = {
+  GET_ROBOT_LIST: "GET_ROBOT_LIST",
+  GET_ROBOTS_DETAILS: "GET_ROBOTS_DETAILS",
+};

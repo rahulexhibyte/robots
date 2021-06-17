@@ -12,6 +12,9 @@ import Alert from "@material-ui/lab/Alert";
 import BarChart from "../../barChart";
 import image1 from "../../../assets/images/detail_image_1.jpeg";
 import image2 from "../../../assets/images/detail_image_2.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getRobotsDetails } from "../../../redux/actions";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -48,8 +51,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RobotDetailsGrid = () => {
+const RobotDetailsGrid = (props) => {
   const classes = useStyles();
+  const { name } = props;
+  const {
+    currentView,
+    currentLocation,
+    milageChart,
+    diagnostic,
+    currentMission,
+    lastMission,
+  } = useSelector((state) => state.currentRobotDetail);
+  const dispatch = useDispatch();
+  useEffect(() => dispatch(getRobotsDetails(name)), []);
   return (
     <>
       <Grid container spacing={3}>
@@ -70,7 +84,7 @@ const RobotDetailsGrid = () => {
         <Grid item xs={12} md={6} lg={4}>
           <RobotDetailCard title="milage per day" className={classes.card}>
             <div className={classes.chart} style={{ position: "relative" }}>
-              <BarChart />
+              <BarChart chartData={milageChart} />
             </div>
           </RobotDetailCard>
         </Grid>
@@ -78,7 +92,7 @@ const RobotDetailsGrid = () => {
           <Box className={classes.errorWrapper}>
             <RobotDetailCard title="diagnostic" className={classes.card}>
               <Alert severity="success" className={classes.chipData}>
-                All System Okay
+                {diagnostic}
               </Alert>
             </RobotDetailCard>
 
@@ -96,48 +110,32 @@ const RobotDetailsGrid = () => {
             className={classes.scrollCard}
           >
             <List>
-              <ListItem>
-                <ListItemText
-                  primary="Docking Station"
-                  className={classes.chipData}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Take Measurement"
-                  className={classes.chipData}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="Docking Station"
-                  className={classes.chipData}
-                />
-              </ListItem>
+              {currentMission.map((mission, index) => {
+                return (
+                  <ListItem>
+                    <ListItemText
+                      primary={mission}
+                      className={classes.chipData}
+                    />
+                  </ListItem>
+                );
+              })}
             </List>
           </RobotDetailCard>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <RobotDetailCard title="last mission" className={classes.scrollCard}>
             <List>
-              <ListItem>
-                <ListItemText
-                  primary="06-01-2021 11:45"
-                  className={classes.chipData}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="06-01-2021 11:45"
-                  className={classes.chipData}
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemText
-                  primary="06-01-2021 11:45"
-                  className={classes.chipData}
-                />
-              </ListItem>
+              {lastMission.map((mission, index) => {
+                return (
+                  <ListItem>
+                    <ListItemText
+                      primary={mission}
+                      className={classes.chipData}
+                    />
+                  </ListItem>
+                );
+              })}
             </List>
           </RobotDetailCard>
         </Grid>
