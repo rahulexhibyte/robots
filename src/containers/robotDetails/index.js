@@ -2,30 +2,14 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { makeStyles, Box } from "@material-ui/core";
-import RobotDetailItem from "../../components/robots/RobotDetailsItem";
-import RobotDetailsGrid from "../../components/robots/RobotDetailsGrid";
+import RobotDetailItem from "../../components/robots/robotDetailsItem";
+import RobotDetailsGrid from "../../components/robots/robotDetailsGrid";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     padding: theme.spacing(2),
     border: `solid 1px ${theme.palette.secondary.light}`,
-  },
-  paper: {
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-  card: {
-    height: "100%",
-  },
-  scrollCard: {
-    maxHeight: "250px",
-    overflow: "auto",
-  },
-  title: {
-    color: theme.palette.primary.light,
-    fontWeight: 600,
-    textTransform: "capitalize",
   },
   robotDetailWrapper: {
     margin: "15px 15px",
@@ -61,48 +45,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
-  },
-  chipWrapper: {
-    color: theme.palette.primary.main,
-    display: "flex",
-    flex: 1,
-    "&:not(:last-child)": {
-      marginRight: 10,
-    },
-  },
-  chipLabel: {
-    color: theme.palette.primary.light,
-    marginRight: 10,
-    fontWeight: 600,
-    textTransform: "capitalize",
-    [theme.breakpoints.down("sm")]: {
-      width: "100px",
-    },
-  },
-  chipData: {
-    color: theme.palette.secondary.dark,
-    fontWeight: "500",
-    textTransform: "capitalize",
-  },
-  errorWrapper: {
-    display: "flex",
-    flexDirection: "column",
-    "& button": {
-      marginTop: 16,
-    },
-  },
-  media: {
-    height: 400,
-    width: "100%",
-    "& img": {
-      objectFit: "cover",
-      height: "100%",
-      width: "100%",
-    },
-  },
-  chart: {
-    height: 400,
-    width: "100%",
   },
 }));
 

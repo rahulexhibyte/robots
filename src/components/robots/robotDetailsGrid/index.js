@@ -7,9 +7,9 @@ import {
   ListItemText,
   makeStyles,
 } from "@material-ui/core";
-import RobotDetailCard from "../RobotDetailsCard";
+import RobotDetailCard from "../robotDetailsCard";
 import Alert from "@material-ui/lab/Alert";
-import BarChart from "../../BarChart";
+import BarChart from "../../barChart";
 import image1 from "../../../assets/images/detail_image_1.jpeg";
 import image2 from "../../../assets/images/detail_image_2.jpg";
 

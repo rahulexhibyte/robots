@@ -1,7 +1,6 @@
-import renderProgress from "../cellRenderers/renderProgress";
-import renderLink from "../cellRenderers/renderLink";
-import renderStatus from "../cellRenderers/renderStatus";
-
+import renderLink from "../renderLinks";
+import renderStatus from "../renderStatus";
+import renderProgress from "../renderProgress";
 export const getRobotColumns = () => [
   { field: "id", hide: true },
   { field: "name", headerName: "Name", width: 130, renderCell: renderLink },
