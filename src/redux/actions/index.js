@@ -1,3 +1,4 @@
+import { ContactSupportOutlined } from "@material-ui/icons";
 import { constants } from "../constants ";
 const robotsLists = [
   {
@@ -10,6 +11,53 @@ const robotsLists = [
     mileage: 3434,
     hours: 34,
     lastService: "2020 - 05 - 17",
+    currentView: {
+      viewImage: "../../../assets/images/detail_image_2.jpg",
+    },
+    currentLocation: {
+      locationImage: "../../../assets/images/detail_image_1.jpeg",
+    },
+    milageChart: {
+      dates: [
+        "07/06/21",
+        "08/06/21",
+        "09/06/21",
+        "10/06/21",
+        "11/06/21",
+        "12/06/21",
+        "13/06/21",
+      ],
+      milage: [25, 19, 3, 5, 15, 3, 7],
+    },
+    diagnostic: "All System Okay",
+    currentMission: ["Taking Snacks", "Taking Snacks", "Taking Snacks"],
+    lastMission: [
+      {
+        id: 1,
+        date: "01-02-2021",
+        mission: {
+          name: "SGP-Deck-1",
+          site: "SGP",
+          status: "completed",
+          mapImage: "imageUrl",
+          progresses: [
+            { time: "15/06/2021 13:57", action: "unDock", result: 1 },
+            { time: "15/06/2021 13:57", action: "unDock", result: 1 },
+            { time: "15/06/2021 13:57", action: "unDock", result: 1 },
+          ],
+          images: [
+            "https://images.pexels.com/photos/2695680/pexels-photo-2695680.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.pexels.com/photos/2695680/pexels-photo-2695680.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.pexels.com/photos/2695680/pexels-photo-2695680.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.pexels.com/photos/2695680/pexels-photo-2695680.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.pexels.com/photos/2695680/pexels-photo-2695680.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          ],
+        },
+      },
+      { id: 2, date: "01-02-2021" },
+      { id: 3, date: "01-02-2021" },
+      { id: 4, date: "01-02-2021" },
+    ],
   },
   {
     id: 2,
@@ -21,6 +69,33 @@ const robotsLists = [
     mileage: 5,
     hours: 4,
     lastService: "2021 - 03 - 14",
+    lastMission: [
+      {
+        id: 1,
+        date: "01-02-2021",
+        mission: {
+          name: "SGP-Deck-1",
+          site: "SGP",
+          status: "completed",
+          mapImage: "imageUrl",
+          progresses: [
+            { time: "15/06/2021 13:57", action: "unDock", result: 1 },
+            { time: "15/06/2021 13:57", action: "unDock", result: 1 },
+            { time: "15/06/2021 13:57", action: "unDock", result: 1 },
+          ],
+          images: [
+            "https://images.pexels.com/photos/2695680/pexels-photo-2695680.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.pexels.com/photos/2695680/pexels-photo-2695680.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.pexels.com/photos/2695680/pexels-photo-2695680.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.pexels.com/photos/2695680/pexels-photo-2695680.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://images.pexels.com/photos/2695680/pexels-photo-2695680.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          ],
+        },
+      },
+      { id: 2, date: "01-02-2021" },
+      { id: 3, date: "01-02-2021" },
+      { id: 4, date: "01-02-2021" },
+    ],
   },
   {
     id: 3,
@@ -55,36 +130,26 @@ const getRobotsList = () => {
 };
 
 const getRobotsDetails = (robotId) => {
-  const robotDetails = {
-    id: 1,
-    status: "idle",
-    battery: "100%",
-    pressure: "95 mbar",
-    milage: "3524km",
-    lastService: "01-02-2021",
-    currentView: {
-      viewImage: "../../../assets/images/detail_image_2.jpg",
-    },
-    currentLocation: {
-      locationImage: "../../../assets/images/detail_image_1.jpeg",
-    },
-    milageChart: {
-      dates: [
-        "07/06/21",
-        "08/06/21",
-        "09/06/21",
-        "10/06/21",
-        "11/06/21",
-        "12/06/21",
-        "13/06/21",
-      ],
-      milage: [25, 19, 3, 5, 15, 3, 7],
-    },
-    diagnostic: "All System Okay",
-    currentMission: ["Taking Snacks", "Taking Snacks", "Taking Snacks"],
-    lastMission: ["01-02-2021", "01-02-2021", "01-02-2021"],
-  };
+  const robotDetails =
+    robotsLists[robotsLists.findIndex((robot) => robot.id === robotId)];
+  console.log(robotDetails);
   return { type: constants.GET_ROBOTS_DETAILS, robotDetails };
 };
 
-export { getRobotsList, getRobotsDetails };
+const getRoobotMissionById = (robotId, missionId) => {
+  console.log(typeof robotId, typeof missionId);
+
+  const robotDetails =
+    robotsLists[robotsLists.findIndex((robot) => robot.id === +robotId)];
+  console.log(robotDetails);
+  const robotMissions = robotDetails.lastMission;
+  console.log(robotMissions);
+  const missionDetails =
+    robotMissions[
+      robotMissions.findIndex((mission) => mission.id === +missionId)
+    ].mission;
+  console.log(missionDetails);
+  return { type: constants.GET_ROBOT_MISSION_BY_ID, missionDetails };
+};
+
+export { getRobotsList, getRobotsDetails, getRoobotMissionById };

@@ -15,6 +15,7 @@ import image2 from "../../../assets/images/detail_image_2.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getRobotsDetails } from "../../../redux/actions";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -52,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RobotDetailsGrid = (props) => {
+  const history = useHistory();
   const classes = useStyles();
   const { name } = props;
   const {
@@ -59,8 +61,8 @@ const RobotDetailsGrid = (props) => {
     currentLocation,
     milageChart,
     diagnostic,
-    currentMission,
-    lastMission,
+    currentMission = [],
+    lastMission = [],
   } = useSelector((state) => state.currentRobotDetail);
   const dispatch = useDispatch();
   useEffect(() => dispatch(getRobotsDetails(name)), []);
@@ -128,9 +130,14 @@ const RobotDetailsGrid = (props) => {
             <List>
               {lastMission.map((mission, index) => {
                 return (
-                  <ListItem>
+                  <ListItem
+                    onClick={() => {
+                      console.log(`/robots/${+name}/lm/${mission.id}`);
+                      history.push(`/robots/${+name}/lm/${mission.id}`);
+                    }}
+                  >
                     <ListItemText
-                      primary={mission}
+                      primary={mission.date}
                       className={classes.chipData}
                     />
                   </ListItem>

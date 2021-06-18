@@ -10,6 +10,7 @@ import { getRobotColumns } from "../../components/robots/robotColumns";
 import RobotDetails from "../robotDetails";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { getRobotsList } from "../../redux/actions";
+import MissionViewer from "../missionViewer";
 
 const useStyles = (theme) => ({
   root: {
@@ -47,8 +48,11 @@ const RobotTable = (props) => {
   const columns = getRobotColumns();
   return (
     <Switch>
-      <Route path={"/robots/:name"}>
+      <Route exact path={"/robots/:name"}>
         <RobotDetails />
+      </Route>
+      <Route exact path={"/robots/:robotid/lm/:missionid"}>
+        <MissionViewer />
       </Route>
       <Route path={"/robots/"}>
         <div

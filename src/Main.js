@@ -12,6 +12,7 @@ import Apps from "./containers/apps";
 import Sites from "./containers/sites";
 import Home from "./containers/home";
 import MissionEditor from "./containers/missions";
+import MissionViewer from "./containers/missionViewer";
 
 const theme = createMuiTheme({
   palette: {
