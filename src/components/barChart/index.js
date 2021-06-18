@@ -21,13 +21,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getSampleData = (chartData) => {
+const getSampleData = (chartData = {}) => {
   const sampleData = {
-    labels: chartData.dates,
+    labels: chartData.dates || [],
     datasets: [
       {
         label: "Meters Driven per Day",
-        data: chartData.milage,
+        data: chartData.milage || [],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",

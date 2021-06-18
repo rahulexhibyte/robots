@@ -54,11 +54,11 @@ export default function RobotDetails() {
   const { name } = useParams();
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { status, battery, pressure, milage, lastService } = useSelector(
+  const { status, battery, pressure, mileage, lastService } = useSelector(
     (state) => state.currentRobotDetail
   );
 
-  useEffect(() => dispatch(getRobotsDetails(name)), []);
+  useEffect(() => dispatch(getRobotsDetails(+name)), []);
   return (
     <div className={classes.robotDetailWrapper}>
       <div className={classes.robotDetailHeader}>
@@ -67,10 +67,10 @@ export default function RobotDetails() {
       </div>
       <div elevation={1} className={classes.root}>
         <Box className={classes.shortData}>
-          <RobotDetailItem label="Status" data={status} />
-          <RobotDetailItem label="Battery" data={battery} />
-          <RobotDetailItem label="Pressure" data={pressure} />
-          <RobotDetailItem label="Milage" data={milage} />
+          <RobotDetailItem label="Status" data={`${status}`} />
+          <RobotDetailItem label="Battery" data={`${battery}%`} />
+          <RobotDetailItem label="Pressure" data={`${pressure} mBar`} />
+          <RobotDetailItem label="Milage" data={`${mileage} Km`} />
           <RobotDetailItem label="Last service:" data={lastService} />
         </Box>
         <RobotDetailsGrid name={name} />
