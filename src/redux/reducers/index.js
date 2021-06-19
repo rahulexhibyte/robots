@@ -1,9 +1,12 @@
 import { constants } from "../constants ";
 
 const initState = {
+  name: "John Deo",
   robots: [],
   currentRobotDetail: {},
   missionDetails: {},
+  apps: [],
+  news: [],
 };
 
 const reducers = (state = initState, action) => {
@@ -24,6 +27,18 @@ const reducers = (state = initState, action) => {
       return {
         ...state,
         missionDetails: action.missionDetails,
+      };
+
+    case constants.GET_APPS:
+      return {
+        ...state,
+        apps: action.apps,
+      };
+
+    case constants.GET_NEWS:
+      return {
+        ...state,
+        news: action.news,
       };
 
     default:

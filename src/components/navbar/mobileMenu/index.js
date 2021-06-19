@@ -8,6 +8,8 @@ import {
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import AppsIcon from "@material-ui/icons/Apps";
 import { withStyles } from "@material-ui/core/styles";
+
+import HomeIcon from "@material-ui/icons/Home";
 import { useHistory } from "react-router-dom";
 
 const useStyles = (theme) => ({
@@ -38,6 +40,12 @@ const MobileMenu = ({ openMenu, anchorEl, handleMenu, onClose, classes }) => {
           handleClose={onClose}
           keepMounted
         >
+          <MenuItem onClick={() => history.push("/home")}>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <Typography variant="inherit">Home</Typography>
+          </MenuItem>
           <MenuItem onClick={() => history.push("/robots")}>
             <ListItemIcon>
               <img

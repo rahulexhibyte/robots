@@ -41,9 +41,24 @@ const robotsLists = [
           status: "completed",
           mapImage: "imageUrl",
           progresses: [
-            { time: "15/06/2021 13:57", action: "unDock", result: 1 },
-            { time: "15/06/2021 13:57", action: "unDock", result: 1 },
-            { time: "15/06/2021 13:57", action: "unDock", result: 1 },
+            {
+              time: "15/06/2021 13:57",
+              action: "unDock",
+              result: 1,
+              status: "success",
+            },
+            {
+              time: "16/06/2021 13:57",
+              action: "unDock",
+              result: 1,
+              status: "warning",
+            },
+            {
+              time: "15/06/2021 13:57",
+              action: "unDock",
+              result: 1,
+              status: "failure",
+            },
           ],
           images: [
             "https://images.pexels.com/photos/2695680/pexels-photo-2695680.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -79,9 +94,24 @@ const robotsLists = [
           status: "completed",
           mapImage: "imageUrl",
           progresses: [
-            { time: "15/06/2021 13:57", action: "unDock", result: 1 },
-            { time: "15/06/2021 13:57", action: "unDock", result: 1 },
-            { time: "15/06/2021 13:57", action: "unDock", result: 1 },
+            {
+              time: "15/06/2021 13:57",
+              action: "unDock",
+              result: 1,
+              status: "success",
+            },
+            {
+              time: "16/06/2021 13:57",
+              action: "unDock",
+              result: 1,
+              status: "warning",
+            },
+            {
+              time: "15/06/2021 13:57",
+              action: "unDock",
+              result: 1,
+              status: "failure",
+            },
           ],
           images: [
             "https://images.pexels.com/photos/2695680/pexels-photo-2695680.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -121,6 +151,84 @@ const robotsLists = [
   },
 ];
 
+const appsList = [
+  { id: 1, title: "Emailer", desc: "Send Email upon Checkpoint Completion" },
+  {
+    id: 2,
+    title: "Dial Gauge Detection",
+    desc: "Read Dial Gauge & Raise alarms if threshold are exceeded.",
+  },
+  {
+    id: 3,
+    title: "Value Detection",
+    desc: "Check if Value are Opened pr closed",
+  },
+  {
+    id: 4,
+    title: "Hotspot Detectcor",
+    desc: "Analyze Temprature Hotspots and Raise Alarms",
+  },
+  {
+    id: 5,
+    title: "Human-in-the-Loop",
+    desc: "Process any checkpoint data by human experts",
+  },
+  {
+    id: 6,
+    title: "Street View",
+    desc: "Create Return to Scene Panoramas",
+  },
+  {
+    id: 7,
+    title: "3D Modeller",
+    desc: "Export Point Cloudbased 3D Models from any Mission",
+  },
+  {
+    id: 8,
+    title: "GPA Detector",
+    desc: "Define Behaviour to React on General Platform Alarm",
+  },
+];
+
+const newsList = [
+  {
+    id: 1,
+    image:
+      "https://images.pexels.com/photos/4057663/pexels-photo-4057663.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    desc: "See Sketches, it should have tiles that will be dynamically loaded from the backend that represent different Apps. Upon clicking on an App Tile, we will load an App-Detail page, which will come later. Please, take a reference as an Apple Store for a card design.",
+  },
+  {
+    id: 2,
+    image:
+      "https://images.hindustantimes.com/img/2021/06/19/550x309/Milkha_Singh_1624086331150_1624086349308.jpg",
+    desc: 'Milkha Singh will be given a state funeral by the Punjab government and as a mark of respect to the track legend a day\'s mourning will also be observed, chief minister Captain Amarinder Singh said on Saturday. "Have directed that Late Milkha Singh Ji will be given a State Funeral by our Government. Also Punjab will observe one day of State mourning as a mark of respect to the departed legend" Amarinder Singh tweeted.',
+  },
+  {
+    id: 3,
+    image:
+      "https://resize3.indiatvnews.com/en/resize/newbucket/715_-/2021/06/southampton-getty-1624079052.jpg",
+    desc: "Incessant rain washed out the opening day of the much-anticipated World Test Championship final at the Rose Bowl in Southampton, however, the weather forecast remains positive for at least the first half of the second day of the summit clash.",
+  },
+  {
+    id: 4,
+    image:
+      "https://images.pexels.com/photos/4057663/pexels-photo-4057663.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    desc: "See Sketches, it should have tiles that will be dynamically loaded from the backend that represent different Apps. Upon clicking on an App Tile, we will load an App-Detail page, which will come later. Please, take a reference as an Apple Store for a card design.",
+  },
+  {
+    id: 5,
+    image:
+      "https://images.hindustantimes.com/img/2021/06/19/550x309/Milkha_Singh_1624086331150_1624086349308.jpg",
+    desc: 'Milkha Singh will be given a state funeral by the Punjab government and as a mark of respect to the track legend a day\'s mourning will also be observed, chief minister Captain Amarinder Singh said on Saturday. "Have directed that Late Milkha Singh Ji will be given a State Funeral by our Government. Also Punjab will observe one day of State mourning as a mark of respect to the departed legend" Amarinder Singh tweeted.',
+  },
+  {
+    id: 6,
+    image:
+      "https://resize3.indiatvnews.com/en/resize/newbucket/715_-/2021/06/southampton-getty-1624079052.jpg",
+    desc: "Incessant rain washed out the opening day of the much-anticipated World Test Championship final at the Rose Bowl in Southampton, however, the weather forecast remains positive for at least the first half of the second day of the summit clash.",
+  },
+];
+
 const getRobotsList = () => {
   const robots = robotsLists;
   return {
@@ -152,4 +260,20 @@ const getRoobotMissionById = (robotId, missionId) => {
   return { type: constants.GET_ROBOT_MISSION_BY_ID, missionDetails };
 };
 
-export { getRobotsList, getRobotsDetails, getRoobotMissionById };
+const getApps = () => {
+  const apps = appsList;
+  return { type: constants.GET_APPS, apps };
+};
+
+const getNews = () => {
+  const news = newsList;
+  return { type: constants.GET_NEWS, news };
+};
+
+export {
+  getRobotsList,
+  getRobotsDetails,
+  getRoobotMissionById,
+  getApps,
+  getNews,
+};

@@ -1,5 +1,6 @@
 import { Button } from "@material-ui/core";
 import AppsIcon from "@material-ui/icons/Apps";
+import HomeIcon from "@material-ui/icons/Home";
 
 import { withStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router";
@@ -40,6 +41,18 @@ const MainMenu = ({ classes }) => {
   return (
     <>
       <div className={classes.menu}>
+        <Button
+          aria-label="Home"
+          aria-controls="menu-appbar"
+          aria-haspopup="true"
+          color="inherit"
+          className={classes.button}
+          onClick={() => contentChange("home")}
+        >
+          <HomeIcon />
+          <span className={classes.buttonLabel}>Home</span>
+        </Button>
+
         <Button
           aria-label="Robots"
           aria-controls="menu-appbar"

@@ -22,8 +22,15 @@ export function MissionProgress({ progresses }) {
           </TableHead>
           <TableBody>
             {progresses.map((progress, index) => {
+              console.log(progress);
+              const bgColor =
+                progress.status === "success"
+                  ? "green"
+                  : progress.status === "warning"
+                  ? "yellow"
+                  : "red";
               return (
-                <TableRow key={index}>
+                <TableRow key={index} style={{ backgroundColor: `${bgColor}` }}>
                   <TableCell>{progress.time}</TableCell>
                   <TableCell>{progress.action}</TableCell>
                   <TableCell>{progress.result}</TableCell>

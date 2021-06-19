@@ -12,7 +12,7 @@ import Apps from "./containers/apps";
 import Sites from "./containers/sites";
 import Home from "./containers/home";
 import MissionEditor from "./containers/missions";
-import MissionViewer from "./containers/missionViewer";
+import NewsFeed from "./containers/news";
 
 const theme = createMuiTheme({
   palette: {
@@ -49,6 +49,9 @@ const Main = (props) => {
                   keycloak={props.keycloak}
                   onContentChange={props.onContentChange}
                 />
+              </Route>
+              <Route path="/home">
+                <NewsFeed />
               </Route>
               <Route path="/sites">
                 <Sites />
